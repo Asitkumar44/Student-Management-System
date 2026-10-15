@@ -1,0 +1,72 @@
+﻿@model StudentManagementSystem.Models.Student
+
+@{
+    ViewBag.Title = "Student Details";
+}
+
+<h2>Student Details</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Student ID</th>
+        <td>@Model.StudentId</td>
+    </tr>
+
+    <tr>
+        <th>Student Name</th>
+        <td>@Model.StudentName</td>
+    </tr>
+
+    <tr>
+        <th>Gender</th>
+        <td>@Model.Gender</td>
+    </tr>
+
+    <tr>
+        <th>Date of Birth</th>
+        <td>@Model.DateOfBirth</td>
+    </tr>
+
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+
+    <tr>
+        <th>Phone</th>
+        <td>@Model.Phone</td>
+    </tr>
+
+    <tr>
+        <th>Address</th>
+        <td>@Model.Address</td>
+    </tr>
+
+    <tr>
+        <th>Admission Date</th>
+        <td>@Model.AdmissionDate</td>
+    </tr>
+
+    <tr>
+        <th>Department</th>
+        <td>@Model.DepartmentName</td>
+    </tr>
+
+</table>
+
+@Html.ActionLink(
+    "Edit",
+    "EditStudent",
+    "Student",
+    new { id = Model.StudentId },
+    new { @class = "btn btn-primary" }
+)
+
+@Html.ActionLink(
+    "Back to List",
+    "Index",
+    "Student",
+    null,
+    new { @class = "btn btn-secondary" }
+)

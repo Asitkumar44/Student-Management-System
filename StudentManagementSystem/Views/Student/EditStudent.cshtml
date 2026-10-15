@@ -1,0 +1,131 @@
+﻿@model StudentManagementSystem.Models.ViewModels.StudentViewModel
+
+@{
+    ViewBag.Title = "Edit Student";
+}
+
+<h2>Edit Student</h2>
+
+@using (Html.BeginForm("EditStudent", "Student", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.Student.StudentId)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.StudentName)
+
+        @Html.TextBoxFor(
+            m => m.Student.StudentName,
+            new { @class = "form-control" }
+        )
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.Gender)
+
+        @Html.DropDownListFor(
+            m => m.Student.Gender,
+            new SelectList(
+                new[]
+                {
+                    new { Value = "Male", Text = "Male" },
+                    new { Value = "Female", Text = "Female" }
+                },
+                "Value",
+                "Text",
+                Model.Student.Gender
+            ),
+            "-- Select Gender --",
+            new { @class = "form-control" }
+        )
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.DateOfBirth)
+
+        @Html.TextBoxFor(
+            m => m.Student.DateOfBirth,
+            "{0:yyyy-MM-dd}",
+            new
+            {
+                @class = "form-control",
+                type = "date"
+            }
+        )
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.Email)
+
+        @Html.TextBoxFor(
+            m => m.Student.Email,
+            new
+            {
+                @class = "form-control",
+                type = "email"
+            }
+        )
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.Phone)
+
+        @Html.TextBoxFor(
+            m => m.Student.Phone,
+            new { @class = "form-control" }
+        )
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.Address)
+
+        @Html.TextAreaFor(
+            m => m.Student.Address,
+            new
+            {
+                @class = "form-control",
+                rows = 3
+            }
+        )
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.AdmissionDate)
+
+        @Html.TextBoxFor(
+            m => m.Student.AdmissionDate,
+            "{0:yyyy-MM-dd}",
+            new
+            {
+                @class = "form-control",
+                type = "date"
+            }
+        )
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Student.DepartmentId)
+
+        @Html.DropDownListFor(
+            m => m.Student.DepartmentId,
+            Model.Departments,
+            "-- Select Department --",
+            new { @class = "form-control" }
+        )
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">
+        Update Student
+    </button>
+
+    @Html.ActionLink(
+        "Back to List",
+        "Index",
+        "Student",
+        null,
+        new { @class = "btn btn-secondary" }
+    )
+}
